@@ -12,7 +12,9 @@
 
 [3.Cơ chế hoạt động] (#3)
 
-[4.Tham Khảo] (#4)
+[4.Bắt gói tin với wireshark và tcpdump]	(#4)
+
+[5.Tham Khảo] (#5)
 
 <a name="1"></a>
 ### 1.Khái Niệm
@@ -184,7 +186,54 @@ Request-Line= Method Request-URI HTTP-Version CLFR
 - Browser đọc các thẻ HTML, định dạng trang web và kết xuất ra màn hình của bạn.
 
 <a name="4"></a>
-### 4.Tham Khảo
+### 4.Bắt gói tin HTTP
+#### 4.1.Bắt gói tin HTTP với Wireshark
+- Trước đó tôi đã dựng 1 Web server đơn giản, và sẽ truy cập từ client trong mạng lan.
+- Do không có DNS server và virtual host, nên tôi sẽ truy cập thằng bằng địa chỉ ip, ko qua tên miền.
+- Sau khi bắt đầu bắt gói tin, tôi bắt được list các gói tin sau.
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/lA61Bbs.png" />
+
+- các gói tin số 6-11: dùng để tạo kết từ client tới server chạy giao thức tcp.
+- 2 gói tin số 12 và 14: 2 gói tin http request và response.Chúng ta sẽ phân tích 2 gói tin này.
+- Gói tin HTTP-Request:
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/hUH5Fta.png" />
+<ul>
+	<li>Nó chỉ ra các thông số:source IP, dst IP, source port, dst port.Ở đây source là client, dst là server.</li>
+	<li>Sử dụng phương thức GET.</li>
+	<li>Chỉ ra các tham số trong Header-Request: method, Host, Connection, ...</li>
+</ul>
+
+- Gói tin HTTP-Response:
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/XQj2rqw.png" />
+<ul>
+	<li>Nó chỉ ra các thông số:source IP, dst IP, source port, dst port.Ở đây source là server, dst là client.</li>
+	<li>Mã trạng thái: 200</li>
+	<li>Chỉ ra các tham số trong Header-Response: Date, Server, Content-type ...</li>
+</ul>
+
+#### 4.2.Bắt gói tin HTTP với tcpdump
+- Tôi thực hiện bắt gói tin và lưu nó thành file để dễ đọc:`tcpdump -i eth6 -c 25 -w 001.pcap`
+- Sau đó đọc file đã lưu dưới dạng Hex và ASCII: `tcpdump -r 001.pcap -XX`
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/ogd3fKh.png" />
+
+- Gói tin HTTP-Request:
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/BxbYSPP.png" />
+<ul>
+	<li>Nó chỉ ra các thông số:source IP, dst IP, source port(53232), dst port(http).Ở đây source là client, dst là server.</li>
+	<li>Sử dụng phương thức GET.</li>
+	<li>Chỉ ra các tham số trong Header-Request: method, Host, Connection, ...</li>
+</ul>
+
+- Gói tin HTTP-Response:
+<img src="http://img.prntscr.com/img?url=http://i.imgur.com/YPrMl0S.png" />
+<ul>
+	<li>Nó chỉ ra các thông số:source IP, dst IP, source port(http), dst port.Ở đây source là server, dst là client.</li>
+	<li>Mã trạng thái: 200</li>
+	<li>Chỉ ra các tham số trong Header-Response: Date, Server, Content-type ...</li>
+</ul>
+
+<a name="5"></a>
+### 5.Tham Khảo
 - http://www.tutorialspoint.com/http/http_header_fields.htm
 - http://open.ptit.edu.vn/clbsv/showthread.php?t=6871
 - http://www.hongkiat.com/blog/common-http-errors/
