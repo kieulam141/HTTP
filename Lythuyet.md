@@ -100,15 +100,15 @@ Request-Line= Method Request-URI HTTP-Version CLFR
 <a name="2.2"></a>
 #### 2.2.Các phương thức HTTP
 
-Tên | Mô tả |
-GET *| Lấy 1 tài nguyên hiện có từ server. |
-HEAD | Tương tự như GET, nhưng nó truyền tải dòng trạng thái và khu vực Header. |
-POST *| Tạo ra 1 nguồn tài nguyên mới, ví dụ: thông tin khách hàng, file tải lên, …, sử dụng các mẫu HTML. |
-PUT *| Cập nhật 1 nguồn tài nguyên hiện có. |
-DELETE *| Xóa nguồn tài nguyên hiện có. |
-CONNECT | Được sử dụng bởi Client để thành lập một kết nối mạng tới Server. |
-OPTIONS | tìm ra các phương thức HTTP và các chức năng được hỗ trợ bởi một Server. |
-TRACE | Trình bày một vòng lặp kiểm tra thông báo song song với path tới nguồn mục tiêu. |
+| Tên | Mô tả |
+| GET *| Lấy 1 tài nguyên hiện có từ server. |
+| HEAD | Tương tự như GET, nhưng nó truyền tải dòng trạng thái và khu vực Header. |
+| POST *| Tạo ra 1 nguồn tài nguyên mới, ví dụ: thông tin khách hàng, file tải lên, …, sử dụng các mẫu HTML. |
+| PUT *| Cập nhật 1 nguồn tài nguyên hiện có. |
+| DELETE *| Xóa nguồn tài nguyên hiện có. |
+| CONNECT | Được sử dụng bởi Client để thành lập một kết nối mạng tới Server. |
+| OPTIONS | tìm ra các phương thức HTTP và các chức năng được hỗ trợ bởi một Server. |
+| TRACE | Trình bày một vòng lặp kiểm tra thông báo song song với path tới nguồn mục tiêu. |
 
 `*:Các phương thức hay dùng.`
 
@@ -117,49 +117,49 @@ TRACE | Trình bày một vòng lặp kiểm tra thông báo song song với pat
 ##### a.1xx: Thông tin
 - Nghĩa là yêu cầu đã được nhận và tiến trình đang tiếp tục.
 
-Thông báo | Mô tả |
-100 Continue | Chỉ một phần của yêu cầu được nhận bởi Server, nhưng miễn là nó không bị loại bỏ, Client nên tiếp tục với yêu cầu. |
-101 Switching Protocols | Server chuyển đổi giao thức. |
+| Thông báo | Mô tả |
+| 100 Continue | Chỉ một phần của yêu cầu được nhận bởi Server, nhưng miễn là nó không bị loại bỏ, Client nên tiếp tục với yêu cầu. |
+| 101 Switching Protocols | Server chuyển đổi giao thức. |
 
 ##### b.2xx: Thành công
 - Nghĩa là hoạt động đã được nhận, được hiểu, và được chấp nhận một cách thành công.
 
-Thông báo | Mô tả |
-200 OK | Yêu cầu là OK. |
-201 Created | Yêu cầu là hoàn thành, và một nguồn mới được tạo. |
-202 Accepted | Yêu cầu được chấp nhận để xử lý, nhưng xử lý vẫn chưa hoàn thành |
-203 Non-authoritative Information | Thông tin từ 1 bên thứ 3 không được xác thực |
-204 No content | 1 mã trạng thái và header được gửi trong response. nhưng không có phần thân thông báo. |
+| Thông báo | Mô tả |
+| 200 OK | Yêu cầu là OK. |
+| 201 Created | Yêu cầu là hoàn thành, và một nguồn mới được tạo. |
+| 202 Accepted | Yêu cầu được chấp nhận để xử lý, nhưng xử lý vẫn chưa hoàn thành |
+| 203 Non-authoritative Information | Thông tin từ 1 bên thứ 3 không được xác thực |
+| 204 No content | 1 mã trạng thái và header được gửi trong response. nhưng không có phần thân thông báo. |
 
 ##### c.3xx: Chuyển hướng
 - Các hoạt động phải được thực hiện để hoàn thành Request.
 
-Thông báo | Mô tả |
-301 Moved Permanently | Trang được yêu cầu đã di chuyển sang url mới |
-302 Found | Trang được yêu cầu đã di chuyển tạm thời sang url mới |
-303 See other, 307 Temporary Redirect | Trang được yêu cầu có thể được tìm thấy với url khác |
-304 Not Modified | Đây là mã phản hồi tới một If-Modified-Since hoặc If-None-Match header, nơi mà URL không được chỉnh sửa từ ngày cụ thể. |s
-305 Use Proxy | URL được yêu cầu phải được truy cập thông qua proxy được chú thích trong Location header |
+| Thông báo | Mô tả |
+| 301 Moved Permanently | Trang được yêu cầu đã di chuyển sang url mới |
+| 302 Found | Trang được yêu cầu đã di chuyển tạm thời sang url mới |
+| 303 See other, 307 Temporary Redirect | Trang được yêu cầu có thể được tìm thấy với url khác |
+| 304 Not Modified | Đây là mã phản hồi tới một If-Modified-Since hoặc If-None-Match header, nơi mà URL không được chỉnh sửa từ ngày cụ thể. |s
+| 305 Use Proxy | URL được yêu cầu phải được truy cập thông qua proxy được chú thích trong Location header |
 
 ##### d.4xx: Lỗi client
 - Nghĩa là yêu cầu bao gồm các cú pháp sai hoặc không thể hoàn thành.
 
-Thông báo | Mô tả |
-400 Bad Request | Server không hiểu được request |
-401 Unauthorized | Trang được yêu cầu cần username, password |
-403 Forbidden | Truy cập tới trang yêu cầu bị cấm |
-404 Not Found | Server không thể tìm được trang đã yêu cầu |
-408 Request Timeout | Yêu cầu mất nhiều thời gian hơn server sẵn sàng đơi. |
-410 Gone | Trang được yêu cầu không khả dụng. |
+| Thông báo | Mô tả |
+| 400 Bad Request | Server không hiểu được request |
+| 401 Unauthorized | Trang được yêu cầu cần username, password |
+| 403 Forbidden | Truy cập tới trang yêu cầu bị cấm |
+| 404 Not Found | Server không thể tìm được trang đã yêu cầu |
+| 408 Request Timeout | Yêu cầu mất nhiều thời gian hơn server sẵn sàng đơi. |
+| 410 Gone | Trang được yêu cầu không khả dụng. |
 
 ##### e.5xx: Lỗi server
 - Nghĩa là server không thể hoàn thành các yêu cầu hợp lệ
 
-Thông báo | Mô tả |
-500 – Internal Server Error | Yêu cầu không được hoàn thành, server gặp phải trường hợp không mong muốn |
-502 Bad Gateway | Yêu cầu không được hoàn thành, server nhận được 1 phản hồi không có giá trị từ server cấp trên |
-503 Service Unavailable | Yêu cầu không được hoàn thành, server tạm thời bị quá tải hoặc bị down. |
-504 Gateway Timeout | Gateway bị trễ. |
+| Thông báo | Mô tả |
+| 500 – Internal Server Error | Yêu cầu không được hoàn thành, server gặp phải trường hợp không mong muốn |
+| 502 Bad Gateway | Yêu cầu không được hoàn thành, server nhận được 1 phản hồi không có giá trị từ server cấp trên |
+| 503 Service Unavailable | Yêu cầu không được hoàn thành, server tạm thời bị quá tải hoặc bị down. |
+| 504 Gateway Timeout | Gateway bị trễ. |
 
 <a name="3"></a>
 ### 3.Cơ chế hoạt động
