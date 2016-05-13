@@ -28,10 +28,10 @@
 </ul>
 
 <a name="2"></a>
-### [2.Các Thành Phần] (#2)
+### 2.Các Thành Phần
 
 <a name="2.1"></a>
-### [2.1.Thông báo HTTP] (#2.1)
+### 2.1.Thông báo HTTP
 - HTTP được xây dựng trên cơ sở mô hình cấu trúc Client-Server và giao thức Stateless các Yêu cầu/Phản hồi mà điều hành bởi việc trao đổi các thông báo (Message) dọc theo một kết nối TCP/IP.
 - Định dạng chung cho 1 thông báo gồm 4 mục:
 <ul>
@@ -94,11 +94,12 @@ Request-Line= Method Request-URI HTTP-Version CLFR
 <ul>
 	<li>Cho phép Server truyền thông tin thêm về phản hồi mà không thể được đặt trong dòng trạng thái.<li>
 	<li>Cung cấp thông tin về Server và truy cập từ xa tới nguồn được xác định bởi Request-URI.<li>
-	<li>Các Header quan trọng:Accept-Ranges, Age, ETag, Location, Proxy-Authenticate, Retry-After, Server, Vary, WWW-Authenticate<li>
+	<li>Các Header quan trọng:Accept-Ranges, Age, ETag, Location, Proxy-Authenticate, Retry-After, Server, Vary, WWW-Authenticate</li>
 </ul>
 
 <a name="2.2"></a>
 #### 2.2.Các phương thức HTTP
+
 Tên | Mô tả |
 GET *| Lấy 1 tài nguyên hiện có từ server. |
 HEAD | Tương tự như GET, nhưng nó truyền tải dòng trạng thái và khu vực Header. |
@@ -115,12 +116,14 @@ TRACE | Trình bày một vòng lặp kiểm tra thông báo song song với pat
 #### 2.3.Mã trạng thái
 ##### a.1xx: Thông tin
 - Nghĩa là yêu cầu đã được nhận và tiến trình đang tiếp tục.
+
 Thông báo | Mô tả |
 100 Continue | Chỉ một phần của yêu cầu được nhận bởi Server, nhưng miễn là nó không bị loại bỏ, Client nên tiếp tục với yêu cầu. |
 101 Switching Protocols | Server chuyển đổi giao thức. |
 
 ##### b.2xx: Thành công
 - Nghĩa là hoạt động đã được nhận, được hiểu, và được chấp nhận một cách thành công.
+
 Thông báo | Mô tả |
 200 OK | Yêu cầu là OK. |
 201 Created | Yêu cầu là hoàn thành, và một nguồn mới được tạo. |
@@ -130,6 +133,7 @@ Thông báo | Mô tả |
 
 ##### c.3xx: Chuyển hướng
 - Các hoạt động phải được thực hiện để hoàn thành Request.
+
 Thông báo | Mô tả |
 301 Moved Permanently | Trang được yêu cầu đã di chuyển sang url mới |
 302 Found | Trang được yêu cầu đã di chuyển tạm thời sang url mới |
@@ -139,6 +143,7 @@ Thông báo | Mô tả |
 
 ##### d.4xx: Lỗi client
 - Nghĩa là yêu cầu bao gồm các cú pháp sai hoặc không thể hoàn thành.
+
 Thông báo | Mô tả |
 400 Bad Request | Server không hiểu được request |
 401 Unauthorized | Trang được yêu cầu cần username, password |
@@ -149,6 +154,7 @@ Thông báo | Mô tả |
 
 ##### e.5xx: Lỗi server
 - Nghĩa là server không thể hoàn thành các yêu cầu hợp lệ
+
 Thông báo | Mô tả |
 500 – Internal Server Error | Yêu cầu không được hoàn thành, server gặp phải trường hợp không mong muốn |
 502 Bad Gateway | Yêu cầu không được hoàn thành, server nhận được 1 phản hồi không có giá trị từ server cấp trên |
